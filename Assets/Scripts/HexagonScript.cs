@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class HexagonScript : MonoBehaviour
 {
-    private Rigidbody2D rb2b;
+    private Rigidbody2D rb2d;
 
     void Start()
     {
-        rb2b = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -15,24 +15,24 @@ public class HexagonScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            rb2b.AddForce(Vector2.up * value);
+            rb2d.AddForce(Vector2.up * value);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            rb2b.AddForce(Vector2.left * value);
+            rb2d.AddForce(Vector2.left * value);
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            rb2b.AddForce(Vector2.right * value);
+            rb2d.AddForce(Vector2.right * value);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            rb2b.AddTorque(value);
+            rb2d.AddTorque(value);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            rb2b.angularVelocity = 0f;
-            rb2b.linearVelocity = Vector2.zero;
+            rb2d.angularVelocity = 0f;
+            rb2d.linearVelocity = Vector2.zero;
         }
     }
 }
