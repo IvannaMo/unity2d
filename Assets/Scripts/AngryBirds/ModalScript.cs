@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,9 @@ public class ModalScript : MonoBehaviour
 
     [SerializeField]
     private TMPro.TextMeshProUGUI messageTMP;
+
+    [SerializeField]
+    private TMPro.TextMeshProUGUI resumeButtonTMP;
 
     private static ModalScript instance;
     private string titleDefault;
@@ -58,6 +62,7 @@ public class ModalScript : MonoBehaviour
         else if (GameState.isLevelCompleted)
         {
             GameState.levelIndex += 1;
+
             if (GameState.levelIndex >= SceneManager.sceneCountInBuildSettings) 
             {
                 GameState.levelIndex = 0;
@@ -83,6 +88,15 @@ public class ModalScript : MonoBehaviour
 
         if (message != null) messageTMP.text = message;
         else messageTMP.text = messageDefault;
+
+        if ((GameState.triesCount <= 0) || (GameState.levelIndex == SceneManager.sceneCountInBuildSettings - 1))
+        {
+            resumeButtonTMP.text = "Заново";
+        }
+        else
+        {
+            resumeButtonTMP.text = "Продовжити";
+        }
     }
 
     public static void ShowModal(string title = null, string message = null)

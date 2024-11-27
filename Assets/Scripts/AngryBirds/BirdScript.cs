@@ -5,6 +5,9 @@ public class BirdScript : MonoBehaviour
     [SerializeField]
     private Transform arrow;
 
+    [SerializeField]
+    private int triesCount;
+
     private Rigidbody2D rb2d;
     private ForceScript forceScript;
     private Vector3 startPosition;
@@ -15,7 +18,7 @@ public class BirdScript : MonoBehaviour
 
     void Start()
     {
-        GameState.triesCount = 3;
+        GameState.triesCount = triesCount;
         shotTime = 0.0f;
         isShooting = false;
         startPosition = this.transform.position;

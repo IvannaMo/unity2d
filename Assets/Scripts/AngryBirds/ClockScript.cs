@@ -5,6 +5,9 @@ public class ClockScript : MonoBehaviour
     private TMPro.TextMeshProUGUI clock;
     private float gameTime;
 
+    [SerializeField]
+    private float maxGameTime;
+
     void Start()
     {
         clock = GetComponent<TMPro.TextMeshProUGUI>();
@@ -22,10 +25,12 @@ public class ClockScript : MonoBehaviour
 
         clock.text = string.Format("{0:D2}:{1:D2}:{2:D2}.{3:D1}", hours, minutes, seconds, Mathf.FloorToInt(milliseconds / 100));
 
-        if (gameTime >= 15.0f)
+        if (gameTime >= maxGameTime)
         {
             GameState.isLevelFailed = true;
             ModalScript.ShowModal("ПРОГРАШ", "Час вичерпано, спробуйте ще раз");
         }
     }
 }
+
+
